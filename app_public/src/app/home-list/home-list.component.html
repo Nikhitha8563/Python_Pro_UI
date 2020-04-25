@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Upload New File</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <style>
+    input[type=button], input[type=submit] {
+      background-color: #ad1d28;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+    }
+
+    ::-webkit-file-upload-button {
+      background: #ad1d28;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    .fileLoad {
+      margin-top: 55px;
+      margin-left: 10px;
+    }
+
+    .top-pad {
+      margin-top: 30%;
+      margin-left: 60%;
+      position: absolute;
+    }
+    .img-dec{
+      float: left;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    var loadFile = function (event) {
+      var image = document.getElementById('output');
+      image.src = URL.createObjectURL(event.target.files[0]);
+    };
+  </script>
+</head>
+
+
+<body>
+  <h1>Upload Files</h1>
+  <div class="fileLoad">
+      <form action="handle_form" method="post" enctype="multipart/form-data" (ngSubmit)="makeAPostCall()">
+        <div><input #file type="file" name="file" id="target" (change)="fileProgress(file.files, $event)" ></div>
+        <div class="img-dec"><p><img [src]="imgURL" id="output" width="400" *ngIf="imgURL"/></p></div>
+        <div class="top-pad"><input type="submit" value="Upload"></div>
+      </form>
+  </div>
+</body>
+
+</html>
+
+
